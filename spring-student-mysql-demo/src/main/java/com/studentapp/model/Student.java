@@ -14,7 +14,9 @@ import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import com.studentapp.service.StudentEntityListener;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,6 +37,8 @@ import lombok.Setter;
 				@NamedAttributeNode("gadgets")
 		})
 //@EntityListeners(StudentEntityListener.class)
+@EntityListeners(AuditingEntityListener.class)
+@Audited
 public class Student extends Auditable<String>{
 	private String studentName;
 	@Id
@@ -44,6 +48,7 @@ public class Student extends Auditable<String>{
 	@JoinColumn(name="address_id")
 	private Address address;
 
+	@NotAudited
 	@OneToMany(cascade = CascadeType.ALL)//, fetch = FetchType.EAGER)
 	@JoinColumn(name="student_id")
 	private Set<Gadgets> gadgets;

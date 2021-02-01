@@ -2,13 +2,8 @@ package com.studentapp.model;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,16 +13,14 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 
-@NoArgsConstructor
-@AllArgsConstructor
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+//@Setter
+//@Getter
+//@MappedSuperclass
+//@EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable<T> {
 	@CreatedBy
     protected T createdBy;
@@ -36,7 +29,7 @@ public abstract class Auditable<T> {
     @CreatedDate
     protected Date createdDate;
 
-    @LastModifiedBy
+    @LastModifiedBy 
     protected T lastModifiedBy;
 
     @Temporal(TemporalType.TIMESTAMP)
