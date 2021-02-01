@@ -1,7 +1,11 @@
 package com.empapp.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.Id;
+
+import org.hibernate.envers.Audited;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,8 +20,10 @@ import lombok.Setter;
 //@EntityListeners(EmpAuditListener.class)
 //JPA entity listener to capture saving and updating data
 
-public class Employee extends Auditable<String>{
-
+@Audited
+@EntityListeners(AuditingEntityListener.class)
+//public class Employee extends Auditable<String>{
+public class Employee {//extends Auditable<String>{
 	String empName;
 	@Id
 	Integer empId;

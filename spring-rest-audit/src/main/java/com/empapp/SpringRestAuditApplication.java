@@ -23,9 +23,9 @@ public class SpringRestAuditApplication implements CommandLineRunner{
 	EmpService empService;   
 	@Override
 	public void run(String... args) throws Exception {
-		Employee employee = new Employee("Omkar",22,20000);
+		Employee employee = new Employee("Mridhu",23,20000);
 		empService.addEmployee(employee);
-		empService.updateEmployee(10,2000);
+		empService.updateEmployee(21,2000);
 //		empService.deleteEmployee(11);
 		empService.getAllEmployees().forEach(System.out::println);
 		
